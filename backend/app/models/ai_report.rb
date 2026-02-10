@@ -1,0 +1,2 @@
+class AiReport < ApplicationRecord
+end
