@@ -1,8 +1,8 @@
 class GeminiClient
   include HTTParty
-  base_uri "https://generativelanguage.googleapis.com/v1"
-  
-  DEFAULT_MODEL = "gemini-2.5-flash-lite"
+  base_uri "https://generativelanguage.googleapis.com/v1beta"
+
+  DEFAULT_MODEL = "gemini-2.0-flash-lite"
   MAX_ITERATIONS = 5
 
   def initialize
@@ -17,7 +17,7 @@ class GeminiClient
     payload = {
       contents: messages,
       tools: tools,
-      generationConfig: { temperature: 0.2 }
+      generation_config: { temperature: 0.2 }
     }
     
     if system_instruction

@@ -2,7 +2,7 @@ class ReportingTools
   def self.definitions
     [
       {
-        "function_declarations": [
+        "functionDeclarations": [
           {
             "name": "fetch_sales_data",
             "description": "Get the total revenue for a specific region and month.",
