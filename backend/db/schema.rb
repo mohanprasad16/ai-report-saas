@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2026_02_10_094252) do
+ActiveRecord::Schema[7.2].define(version: 2026_02_10_123804) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -21,6 +21,30 @@ ActiveRecord::Schema[7.2].define(version: 2026_02_10_094252) do
     t.integer "prompt_tokens"
     t.integer "completion_tokens"
     t.integer "total_tokens"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "churn_metrics", force: :cascade do |t|
+    t.date "month"
+    t.float "churn_rate"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "region"
+  end
+
+  create_table "marketing_spends", force: :cascade do |t|
+    t.date "month"
+    t.string "region"
+    t.integer "spend_amount"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "revenues", force: :cascade do |t|
+    t.date "month"
+    t.string "region"
+    t.integer "total_revenue"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -1,0 +1,2 @@
+class ChurnMetric < ApplicationRecord
+end

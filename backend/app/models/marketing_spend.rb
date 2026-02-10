@@ -1,0 +1,2 @@
+class MarketingSpend < ApplicationRecord
+end
