@@ -10,9 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2026_02_10_123804) do
+ActiveRecord::Schema[7.2].define(version: 2026_02_11_042407) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "vector"
 
   create_table "ai_reports", force: :cascade do |t|
     t.text "prompt"
@@ -31,6 +32,14 @@ ActiveRecord::Schema[7.2].define(version: 2026_02_10_123804) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "region"
+  end
+
+  create_table "knowledge_base_articles", force: :cascade do |t|
+    t.string "title"
+    t.text "content"
+    t.vector "embedding", limit: 3072
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "marketing_spends", force: :cascade do |t|

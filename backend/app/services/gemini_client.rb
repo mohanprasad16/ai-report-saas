@@ -28,6 +28,25 @@ class GeminiClient
     run_conversation_loop(payload)
   end
 
+  def embed(text)
+    response = self.class.post(
+      "/models/gemini-embedding-001:embedContent?key=#{@api_key}",
+      headers: { "Content-Type" => "application/json" },
+      body: {
+        model: "models/gemini-embedding-001",
+        content: { parts: [{ text: text }] }
+      }.to_json
+    )
+
+    unless response.success?
+      raise "Gemini Embedding Error: #{response.code} - #{response.body}"
+    end
+
+    values = JSON.parse(response.body).dig("embedding", "values")
+    puts "DEBUG: Embedding size: #{values.length}"
+    values
+  end
+
   private
 
   def run_conversation_loop(payload)
